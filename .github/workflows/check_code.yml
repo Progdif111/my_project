@@ -1,0 +1,21 @@
+name: Проверка Python кода
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  check-syntax:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Скачиваем код репозитория
+      uses: actions/checkout@v4
+
+    - name: Устанавливаем Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Проверяем синтаксис нашего скрипта
+      run: python3 -m py_compile script.py
